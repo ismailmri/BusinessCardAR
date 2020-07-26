@@ -10,12 +10,24 @@
 
 <script>
 function URL () {
-  document.querySelector("phone").addEventListener("click", (e)=> {
+  document.querySelector("website").addEventListener("click", (e)=> {
     window.location.href = "https://moe-ismail.com/";
+  });
+}
+
+function Phone () {
+  document.querySelector("phone").addEventListener("click", (e)=> {
+    window.location.href = "tel: +962792021638";
   });
 }
 </script>
 <style>
+
+  body {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+  }
   .buttons {
     position: absolute;
     bottom: 0;
@@ -26,6 +38,17 @@ function URL () {
     justify-content: center;
     align-items: center;
     z-index: 10;
+    padding: 14px 32px;
+  }
+
+  button {
+    cursor: pointer;
+    padding: 14px 32px;
+    margin: auto 1rem;
+  }
+
+  button:hover {
+    background-color: lightblue;
   }
 
   .phone {
@@ -34,13 +57,30 @@ function URL () {
     border: none;
     background: white;
     color: black;
-    width: 4em;
-    height: 2em;
+    width: 6em;
+    height: 3em;
   }
+
+  .website {
+    padding: 0.25em;
+    border-radius: 4px;
+    border: none;
+    background: white;
+    color: black;
+    width: 6em;
+    height: 3em;
+  }
+
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+
 </style>
 <body>
 <div class="buttons">
-  <button class="phone"><a href="https://moe-ismail.com">Phone</a></button>
+  <button class="website"><a href="https://moe-ismail.com">Website</a></button>
+  <button class="phone"><a href="tel:+962792021638">Phone</a></button>
 </div>
 
   <a-scene embedded arjs = 'trackingMethod: best;'>
