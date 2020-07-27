@@ -9,17 +9,42 @@
 </head>
 
 <script>
-function URL () {
+function URL() {
   document.querySelector("website").addEventListener("click", (e)=> {
     window.location.href = "https://moe-ismail.com/";
   });
 }
 
-function Phone () {
+function Phone() {
   document.querySelector("phone").addEventListener("click", (e)=> {
     window.location.href = "tel: +962792021638";
   });
 }
+
+function Email() {
+  document.querySelector("email").addEventListener("click", (e) => {
+    window.location.href = "mailto: mohammad.ismail9190@gmail.com";
+  });
+}
+
+AFRAME.registerComponent('rotation-reader', {
+  /**
+   * We use IIFE (immediately-invoked function expression) to only allocate one
+   * vector or euler and not re-create on every tick to save memory.
+   */
+  tick: (function () {
+    let position = new THREE.Vector3();
+    let quaternion = new THREE.Quaternion();
+
+    return function () {
+      this.el.object3D.getWorldPosition(position);
+      this.el.object3D.getWorldQuaternion(quaternion);
+      // position and rotation now contain vector and quaternion in world space.
+    };
+  })
+});
+
+
 </script>
 <style>
 
@@ -30,7 +55,7 @@ function Phone () {
   }
   .buttons {
     position: absolute;
-    bottom: 0;
+    bottom: 50px;
     left: 0;
     width: 100%;
     height: 5em;
@@ -71,6 +96,20 @@ function Phone () {
     height: 3em;
   }
 
+  .email {
+    padding: 0.25em;
+    border-radius: 4px;
+    border: none;
+    background: white;
+    color: black;
+    width: 6em;
+    height: 3em;
+  }
+
+  button:hover .email {
+    background-color: lightgreen;
+  }
+
   a {
     text-decoration: none;
     color: #000;
@@ -79,8 +118,9 @@ function Phone () {
 </style>
 <body>
 <div class="buttons">
-  <button class="website"><a href="https://moe-ismail.com">Website</a></button>
   <button class="phone"><a href="tel:+962792021638">Phone</a></button>
+  <button class="email"><a href="mailto:mohammad.ismail9190@gmail.com">Email</a></button>
+  <button class="website"><a href="https://moe-ismail.com">Website</a></button>
 </div>
 
   <a-scene embedded arjs = 'trackingMethod: best;'>
