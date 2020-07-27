@@ -6,6 +6,7 @@
   <title>Mohammad's Business Card</title>
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
   <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <script>
@@ -44,6 +45,10 @@ AFRAME.registerComponent('rotation-reader', {
   })
 });
 
+// anchorRef.addEventListener("markerFound", (e) => {
+
+// })
+
 
 </script>
 <style>
@@ -64,16 +69,20 @@ AFRAME.registerComponent('rotation-reader', {
     align-items: center;
     z-index: 10;
     padding: 14px 32px;
+    opacity: 1;
   }
+
+
 
   button {
     cursor: pointer;
     padding: 14px 32px;
     margin: auto 1rem;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, .5);
   }
 
   button:hover {
-    background-color: lightblue;
+    background-color: rgb(90, 228, 163);
   }
 
   .phone {
@@ -118,9 +127,10 @@ AFRAME.registerComponent('rotation-reader', {
 </style>
 <body>
 <div class="buttons">
-  <button class="phone"><a href="tel:+962792021638">Phone</a></button>
-  <button class="email"><a href="mailto:mohammad.ismail9190@gmail.com">Email</a></button>
+  <button class="phone"><a href="tel:+962792021638"><i class="fa fa-phone" style="font-size: 24px;"></i></a></button>
+  <button class="email"><a href="mailto:mohammad.ismail9190@gmail.com"><i class="fa fa-envelope" style="font-size: 20px;"></i></a></button>
   <button class="website"><a href="https://moe-ismail.com">Website</a></button>
+
 </div>
 
   <a-scene embedded arjs = 'trackingMethod: best;'>
@@ -131,12 +141,15 @@ AFRAME.registerComponent('rotation-reader', {
     <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
     <a-sky color="#ECECEC"></a-sky> -->
 
-    <a-plane src="./bg.jpg" height="3" width="4" color="grey" rotation="-90 0 0" position="0 0 0" ></a-plane>
+    <a-plane src="./bg.jpg" height="3" width="4" color="grey" rotation="-90 0 0" position="0 0 -1" ></a-plane>
     <a-text rotation="-90 0 0" value="\n\nMohammad Ismail\n\nWebsite: moe-ismail.com\n\nEmail: mohammad.ismail9190@gmail.com" 
-    position="-1.5 1 -1" height="3" width="3" color="white" ></a-text>
+    position="-1.5 1 -2" height="3" width="3" color="white" ></a-text>
     <a-text rotation="-90 0 0" value="\n\nPhone: 079-202-1638" 
-      position="-1.5 1 0" height="3" width="3" color="white"></a-text>
-    <a-image src="./me.jpg" width="1" height="1.5" rotation="-90 0 0" position="1.25 0.5 0.5" ></a-image>
+      position="-1.5 1 -1" height="3" width="3" color="white">
+      <a href="tel: +962792021638"></a>
+    </a-text>
+    <a href="tel:+962792021638"></a>
+    <a-image src="./me.jpg" width="1" height="1.5" rotation="-90 0 0" position="1.25 0.5 -0.5" ></a-image>
 
   </a-anchor>
     <a-camera-static />
